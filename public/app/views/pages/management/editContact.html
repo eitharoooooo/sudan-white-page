@@ -1,0 +1,126 @@
+<!-- Heading -->
+<div class="row text-center">
+    <div class="container">
+        <h2 class="section-heading">Edit Contact</h2>
+        <h3 class="section-subheading text-muted">This page allows you to edit a Contact's</h3>
+    </div>
+</div>
+<!-- Heading -->
+
+<br>
+
+<!-- Bootstrap Navigation Tabs -->
+<ul class="nav nav-tabs">
+    <!-- Name Tab -->
+    <li role="presentation" ng-click="edit.namePhase();" ng-class="nameTab"><a href="#">Name</a></li>
+    <!-- Username Tab -->
+    <li role="presentation" ng-click="edit.numberPhase();" ng-class="numberTab"><a href="#">Number</a></li>
+    <!-- E-mail Tab -->
+    <li role="presentation" ng-click="edit.jobPhase();" ng-class="jobTab"><a href="#">Job</a></li>
+    <!-- Permission Tab -->
+    <li role="presentation" ng-click="edit.locationPhase();" ng-class="locationTab"><a href="#">Location</a></li>
+</ul>
+<!-- Bootstrap Navigation Tabs -->
+
+<br>
+<br>
+
+<!-- Phase One: Name Tab -->
+<form name="edit.nameForm" ng-show="edit.phase1" ng-submit="edit.updateName(newName, edit.nameForm.name.$valid)" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-6">
+                <div ng-class="{ 'has-success':(edit.nameForm.name.$valid && !edit.nameForm.name.$pristine), 'has-error':(!edit.nameForm.name.$valid && !edit.nameForm.name.$pristine) || (!nameForm.name.$valid && nameForm.$submitted) }">
+                    <!-- Name Input -->
+                    <label>Current Name:</label>
+                    <input ng-disabled="edit.disabled" class="form-control" type="text" name="name" placeholder="please enter name" ng-model="newName"  required>
+                    <!-- Name Validation -->
+                    <p class="help-block" ng-show="(!edit.nameForm.name.$pristine && nameForm.name.$error.required) || (edit.nameForm.$submitted && edit.nameForm.name.$error.required)">This field is required</p>
+                    
+                </div>
+                <br>
+                <!-- Update Button -->
+                <button ng-disabled="edit.disabled" class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Phase One: Name -->
+
+<!-- Break -->
+
+<!-- Phase Two: Number Tab -->
+<form name="edit.numberForm" ng-show="edit.phase2" ng-submit="edit.updateNumber(newNumber, edit.numberForm.number.$valid)" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-6">
+                <div ng-class="{ 'has-success':(edit.numberForm.number.$valid && !edit.numberForm.number.$pristine), 'has-error':(!edit.numberForm.number.$valid && !edit.numberForm.number.$pristine) || (!edit.numberForm.number.$valid && edit.numberForm.$submitted)}">
+                    <!-- Number Input -->
+                    <label>Current Number:</label>
+                    <input ng-disabled="register.disabled" class="form-control" type="text" name="number" placeholder="please enter number" ng-model="newNumber" required>
+                    <!-- Number Validation -->
+                    <p class="help-block" ng-show="(!edit.numberForm.number.$pristine && edit.numberForm.number.$error.required) || (edit.numberForm.$submitted && edit.numberForm.number.$error.required)">This field is required</p>
+                    
+                </div>
+                <br>
+                <!-- Update Button -->
+                <button ng-disabled="edit.disabled" class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Phase Two: Number Tab -->
+
+<!-- Break -->
+
+<!-- Phase Three: Job Tab -->
+<form name="edit.jobForm" ng-show="edit.phase3" ng-submit="edit.updateJob(newJob, edit.jobForm.job.$valid)" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-6">
+                <div ng-class="{ 'has-success':(edit.jobForm.job.$valid && !edit.jobForm.job.$pristine), 'has-error':(!edit.jobForm.job.$valid && !edit.jobForm.job.$pristine) || (!edit.jobForm.job.$valid && edit.jobForm.$submitted)}">
+                    <!-- Job Input -->
+                    <label>Current Job:</label>
+                    <input ng-disabled="register.disabled" class="form-control" type="text" name="job" placeholder="please enter job" ng-model="newJob"  required>
+                    
+                </div>
+                <br>
+                <!-- Update Button -->
+                <button ng-disabled="edit.disabled" class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Phase Three: Job Tab -->
+
+<!-- Break -->
+
+<!-- Phase Four: Location Tab -->
+<form name="edit.locationForm" ng-show="edit.phase4" ng-submit="edit.updateLocation(newLocation, edit.locationForm.location.$valid)" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-6">
+                <div ng-class="{ 'has-success':(edit.locationForm.location.$valid && !edit.locationForm.location.$pristine), 'has-error':(!edit.locationForm.location.$valid && !edit.locationForm.location.$pristine) || (!edit.locationForm.location.$valid && edit.locationForm.$submitted)}">
+                    <!-- Job Input -->
+                    <label>Current Job:</label>
+                    <input ng-disabled="register.disabled" class="form-control" type="text" name="location" placeholder="please enter location" ng-model="newLocation"  required>
+                    
+                </div>
+                <br>
+                <!-- Update Button -->
+                <button ng-disabled="edit.disabled" class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Phase Four: Location Tab -->
+
+<br>
+
+<!-- Custom Message -->
+<div class="row show-hide-message" ng-show="edit.successMsg || edit.errorMsg ">
+    <div ng-class="alert">{{ edit.successMsg || edit.errorMsg }}</div>
+</div>
+<!-- Custom Message -->
+
+<br>

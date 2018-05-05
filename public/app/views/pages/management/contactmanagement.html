@@ -1,0 +1,76 @@
+<!-- Heading -->
+<div class="row text-center">
+    <div class="container">
+        <h2 class="section-heading">Contacts Management</h2>
+        <h3 class="section-subheading text-muted" style="color: red">Welcome <strong>{{ main.username }}, </strong>This page allows you to edit and delete contact.</h3>
+    </div>
+</div>
+<!-- Heading -->
+
+<br>
+
+<!-- Loading Icon (Bootstrap) -->
+<div class="jumbotron text-center" ng-show="contactmanagement.loading">
+    <span class="glyphicon glyphicon-repeat spinner"></span>
+    <p>Loading....</p>
+</div>
+<!-- Loading Icon (Bootstrap) -->
+
+<br>
+
+<!-- Contact Management Table -->
+<div class="panel panel-primary">
+    <!-- Heading -->
+    <div class="panel-heading">
+        <strong>Contact Management</strong>
+    </div>
+    <!-- Start: Table -->
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Job</th>
+            <th>Location</th>
+        </tr>
+        <tr ng-repeat="person in contactmanagement.users | filter: searchFilter | limitTo: contactmanagement.limit">
+            <td>{{ person.name }}</td>
+            <td>{{ person.number }}</td>
+            <td>{{ person.job }}</td>
+            <td>{{ person.location }}</td>
+            <td>
+                <!-- Edit Button -->
+                <a href="/editContact/{{ person._id }}">
+                    <button type="button" ng-show="contactmanagement.editAccess" class="btn btn-primary">Edit</button>
+                </a>
+                <!-- Delete Button -->
+                <button type="button" ng-click="contactmanagement.deleteUser(person.number);" ng-show="contactmanagement.deleteAccess" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+        <!-- End: Table -->
+    </table>
+</div>
+<!-- Contact Management Table -->
+
+
+
+<!-- Container: End -->
+
+<br>
+
+<!-- Total Search Results -->
+<div ng-show="searchFilter !== undefined">
+    <p><strong>Total results: </strong>{{ (contactmanagement.users | filter: searchFilter).length }}</p>
+</div>
+
+<!-- Results Being Shown -->
+<div ng-show="searchFilter !== undefined">
+    <p><strong>Showing: </strong>{{( contactmanagement.users | filter: searchFilter | limitTo: contactmanagement.limit).length }}</p>
+</div>
+
+<br>
+
+<!-- Custom Error Message -->
+<div class="row show-hide-message" ng-show="contactmanagement.showMoreError">
+    <div class="alert alert-danger">{{ contactmanagement.showMoreError }}</div>
+</div>
+<!-- Custom Error Message -->

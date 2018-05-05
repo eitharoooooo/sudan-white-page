@@ -1,0 +1,39 @@
+<div class="page-header">
+    <h1>New Contact</h1>
+    </div>
+    
+    <form ng-submit="contact.newContact(contactData);">
+        <!--Name-->
+    <label>Name:</label>
+    <input class="form-control" type="text" name="name" placeholder="Please enter Name" ng-model="contact.contactData.name">
+    <br>
+        <!--Number-->
+    <label>Number:</label>
+    <input class="form-control" type="text" name="number" placeholder="Please enter Number" ng-model="contact.contactData.number">
+    <br>
+        <!--Job-->
+    <label>Job:</label>
+    <input class="form-control" type="text" name="job" placeholder="Please enter Job" ng-model="contact.contactData.job">
+    <br>
+    <!--Location-->
+    <label>Location:</label>
+    <input class="form-control" type="text" name="location" placeholder="Please enter Location" ng-model="contact.contactData.location">
+    <br>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <br>
+    
+     <!-- Loading Icon (Bootstrap) -->
+     <div class="jumbotron text-center" ng-show="contact.loading">
+        <span class="glyphicon glyphicon-repeat spinner"></span>
+        <p>Loading....</p>
+    </div>
+    <br>
+    
+    <div class="row show-hide-message" ng-show="contact.successMsg" >
+        <div class="alert alert-success">{{ contact.successMsg }}</div>
+    </div>
+    <br>
+    <div class="row show-hide-message" ng-show="register.errorMsg" >
+        <div class="alert alert-danger">{{ contact.errorMsg }}</div>
+    </div>
